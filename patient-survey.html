@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>استبيان رضا المرضى | APEXCARE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c1:#7B52AB; --c2:#E84875; --c3:#3DBDAD; --c4:#4A4A9A; --c5:#6B6BBF;
+  --bg:#F4F5FA; --card:#FFFFFF; --bdr:#E4E4F0;
+  --t1:#16162A; --t2:#5A5A7A; --t3:#9898B8;
+  --r:18px; --rel:12px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;height:100%}
+
+body {
+  font-family:'Tajawal',sans-serif;
+  background:var(--bg);
+  color:var(--t1);
+  min-height:100vh;
+  min-height:100dvh;
+  padding:0;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  transition:font-family 0.3s;
+}
+body.en {
+  font-family:'Inter',sans-serif;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(123,82,171,.07), transparent),
+    radial-gradient(ellipse 60% 50% at 10% 90%, rgba(61,189,173,.07), transparent);
+  pointer-events:none;
+  z-index:0;
+}
+
+@media (min-width:600px) {
+  body { padding:16px 14px 40px; }
+  .page { position:relative; z-index:1; width:100%; max-width:540px; margin:0 auto; }
+  .gb {
+    border-radius:calc(var(--r) + 2px);
+    padding:2.5px;
+    background:linear-gradient(135deg,var(--c4),var(--c1),var(--c2),var(--c3),var(--c5),var(--c1));
+    background-size:400% 400%;
+    animation:gf 8s ease infinite;
+    box-shadow:0 8px 32px rgba(123,82,171,.13),0 2px 8px rgba(0,0,0,.06);
+  }
+  .card {
+    background:var(--card);
+    border-radius:var(--r);
+    padding:clamp(20px,5vw,40px) clamp(18px,5vw,38px) clamp(20px,5vw,36px);
+    position:relative;
+  }
+}
+
+@media (max-width:599px) {
+  body { padding:0; background:var(--card); }
+  .page { position:relative; z-index:1; width:100%; min-height:100vh; min-height:100dvh; }
+  .gb { padding:0; background:none; box-shadow:none; min-height:100vh; min-height:100dvh; }
+  .card {
+    background:var(--card);
+    border-radius:0;
+    padding:24px 20px 40px;
+    position:relative;
+    min-height:100vh;
+    min-height:100dvh;
+  }
+  .card::before { border-radius:0; }
+}
+
+@keyframes gf{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--c4),var(--c1),var(--c2),var(--c3));
+  background-size:300% 100%;
+  animation:st 4s linear infinite;
+  border-radius:var(--r) var(--r) 0 0;
+}
+@keyframes st{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+.logo-wrap{ text-align:center; padding:10px 0 18px; margin-bottom:18px; border-bottom:1px solid var(--bdr); }
+.logo-img{ display:block; margin:0 auto; height:clamp(90px,20vw,120px); width:auto; max-width:min(360px,80vw); object-fit:contain; mix-blend-mode:multiply; }
+
+.lang-switch {
+  position: absolute;
+  top: 20px;
+  z-index: 100;
+}
+body:not(.en) .lang-switch { left: 20px; }
+body.en .lang-switch { right: 20px; }
+
+.lang-btn {
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(123, 82, 171, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.lang-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(123, 82, 171, 0.35);
+}
+.lang-btn:active {
+  transform: translateY(0);
+}
+
+.intro {
+  text-align: center;
+  padding: 24px 20px 28px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(123,82,171,.04), rgba(61,189,173,.04));
+  border-radius: var(--rel);
+  border: 1px solid var(--bdr);
+}
+.intro-title {
+  font-size: clamp(19px, 5.5vw, 24px);
+  font-weight: 800;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
+}
+.intro-subtitle {
+  font-size: clamp(15px, 4.2vw, 17px);
+  color: var(--t2);
+  font-weight: 500;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+.intro-desc {
+  font-size: clamp(13px, 3.6vw, 15px);
+  color: var(--t3);
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+.hdr{text-align:center;margin-bottom:20px}
+.hdr h1{ font-size:clamp(17px,5.2vw,22px); font-weight:800; line-height:1.35; color:var(--t1); margin-bottom:10px; }
+.gt{ background:linear-gradient(135deg,var(--c1),var(--c2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hdr p{font-size:clamp(13px,3.6vw,15px);color:var(--t2);line-height:1.75}
+
+.prog{margin-bottom:20px}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+.prog-lbl{font-size:clamp(11px,3vw,13px);font-weight:700;color:var(--t1)}
+.prog-pct{font-size:clamp(11px,3vw,13px);font-weight:600;color:var(--c1)}
+.prog-track{height:6px;background:#EEEEF8;border-radius:99px;overflow:hidden}
+.prog-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--c4),var(--c1),var(--c2));
+  background-size:200% 100%;
+  animation:ps 2.5s linear infinite;
+  border-radius:99px;
+  transition:width .45s ease;
+  min-width:8px;
+}
+@keyframes ps{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+.step{display:none}
+.step.on{display:block;animation:si .3s ease}
+body:not(.en) .step.on {animation:si-rtl .3s ease}
+body.en .step.on {animation:si-ltr .3s ease}
+@keyframes si-rtl{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes si-ltr{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+
+.qt{font-size:clamp(15px,4.3vw,17px);font-weight:700;color:var(--t1);margin-bottom:4px;line-height:1.4}
+.qh{font-size:clamp(11px,3vw,13px);color:var(--t3);margin-bottom:14px;line-height:1.5}
+
+.cg{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+.ch{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 15px;
+  border:1.5px solid var(--bdr);border-radius:var(--rel);
+  background:#F8F8FD;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  user-select:none;
+  transition:border-color .15s,background .15s;
+  position:relative;z-index:2;
+}
+.ch input[type=radio]{display:none}
+.ch.on{border-color:var(--c1);background:rgba(123,82,171,.06)}
+.dot{ width:20px;height:20px;min-width:20px; border-radius:50%;border:2px solid #CDD5E0; display:flex;align-items:center;justify-content:center; flex-shrink:0; transition:border-color .15s,background .15s; }
+.ch.on .dot{border-color:var(--c1);background:var(--c1)}
+.ch.on .dot::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff;display:block}
+.ct{font-size:clamp(14px,4vw,16px);font-weight:500;color:var(--t1);line-height:1.4}
+
+.inp{
+  width:100%;padding:14px 16px;
+  border:1.5px solid var(--bdr);border-radius:var(--rel);
+  font-size:16px;color:var(--t1);
+  background:#F8F8FD;outline:none;
+  -webkit-appearance:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+body:not(.en) .inp { font-family:'Tajawal',sans-serif; direction:rtl; }
+body.en .inp { font-family:'Inter',sans-serif; direction:ltr; }
+.inp::placeholder{color:var(--t3)}
+.inp:focus{border-color:var(--c1);background:#fff;box-shadow:0 0 0 3px rgba(123,82,171,.09)}
+
+.err{
+  display:none;
+  font-size:clamp(12px,3.4vw,14px);
+  color:var(--c2);
+  margin-top:10px;
+  padding:10px 14px;
+  background:rgba(232,72,117,.08);
+  border:1px solid rgba(232,72,117,.2);
+  border-radius:var(--rel);
+}
+.err.on{display:block}
+
+.nav{ display:flex;flex-direction:row;gap:10px; margin-top:20px; position:relative;z-index:10; }
+.bp{
+  flex:1; height:54px; padding:0 16px;
+  border:none;border-radius:var(--rel);
+  background:linear-gradient(135deg,var(--c1),var(--c2));
+  color:#fff;
+  font-size:clamp(15px,4.5vw,17px);font-weight:700;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 14px rgba(123,82,171,.28);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  -webkit-appearance:none;
+  position:relative;z-index:10;
+}
+body:not(.en) .bp { font-family:'Tajawal',sans-serif; }
+body.en .bp { font-family:'Inter',sans-serif; }
+.bp:active:not([disabled]){opacity:.85;box-shadow:0 2px 6px rgba(123,82,171,.2)}
+.bp[disabled]{opacity:.5;cursor:not-allowed}
+
+.bb{
+  width:54px;min-width:54px;height:54px;
+  border:1.5px solid var(--bdr);border-radius:var(--rel);
+  background:#EEEEF8;color:var(--t2);
+  font-size:17px; cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  -webkit-appearance:none;
+}
+.bb:active{opacity:.7}
+
+.spin{
+  border:3px solid rgba(255,255,255,.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  width:22px;height:22px;
+  animation:sp .7s linear infinite;
+}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+#ok, #bad {
+  display:none;
+  text-align:center;
+  padding:40px 20px;
+}
+.ok-ico{
+  width:80px;height:80px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--c3),var(--c1));
+  color:#fff;
+  font-size:48px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(123,82,171,.2);
+}
+#bad .ok-ico{background:linear-gradient(135deg,var(--c2),#D63864)}
+#ok h2, #bad h2{
+  font-size:clamp(19px,5.5vw,24px);
+  font-weight:800;
+  color:var(--t1);
+  margin-bottom:12px;
+}
+.ok-ln{
+  width:60px;height:3px;
+  background:linear-gradient(90deg,var(--c1),var(--c2));
+  margin:0 auto 16px;
+  border-radius:99px;
+}
+#ok p, #bad p{
+  font-size:clamp(14px,4vw,16px);
+  color:var(--t2);
+  line-height:1.7;
+}
+
+[data-ar] { display: inline; }
+[data-en] { display: none; }
+body.en [data-ar] { display: none; }
+body.en [data-en] { display: inline; }
+</style>
+</head>
+<body>
+
+<div class="page"><div class="gb"><div class="card">
+
+  <div class="lang-switch">
+    <button class="lang-btn" onclick="toggleLang()">
+      <span data-ar>🌐 English</span>
+      <span data-en>🌐 العربية</span>
+    </button>
+  </div>
+
+  <div class="logo-wrap">
+    <img src="https://ibrtna.github.io/img/apex-logo.png" alt="APEXCARE" class="logo-img">
+  </div>
+
+  <div class="intro" id="introSec">
+    <div class="intro-title">
+      <span data-ar>رأيك يهمنا</span>
+      <span data-en>Your Opinion Matters</span>
+    </div>
+    <div class="intro-subtitle">
+      <span data-ar>نشكر ثقتك بعيادات أبكس كير 🤍</span>
+      <span data-en>Thank you for trusting APEXCARE Clinics 🤍</span>
+    </div>
+    <div class="intro-desc">
+      <span data-ar>تقييمك لن يستغرق أكثر من دقيقة ويساعدنا على تقديم تجربة تليق بك.</span>
+      <span data-en>Your feedback takes less than a minute and helps us provide an experience worthy of you.</span>
+    </div>
+  </div>
+
+  <div class="prog" id="progSec">
+    <div class="prog-row">
+      <div class="prog-lbl" id="pL">
+        <span data-ar>السؤال 1 من 9</span>
+        <span data-en>Question 1 of 9</span>
+      </div>
+      <div class="prog-pct" id="pP">11%</div>
+    </div>
+    <div class="prog-track">
+      <div class="prog-fill" id="pF" style="width:11%"></div>
+    </div>
+  </div>
+
+  <!-- السؤال 1: سهولة تحديد الموعد -->
+  <div class="step on" id="s1">
+    <div class="qt">
+      <span data-ar>كان من السهل تحديد موعدي</span>
+      <span data-en>It was easy to schedule my appointment</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg1">
+      <label class="ch">
+        <input type="radio" name="q1" value="Strongly agree أوافق بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق بشدة</span>
+          <span data-en>Strongly agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q1" value="Agree يوافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق</span>
+          <span data-en>Agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q1" value="Neutral حيادي">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>محايد</span>
+          <span data-en>Neutral</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q1" value="Disagree غير موافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق</span>
+          <span data-en>Disagree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q1" value="Strongly disagree أرفض بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق بشدة</span>
+          <span data-en>Strongly disagree</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e1">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bp" id="n1" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 2: الاستقبال -->
+  <div class="step" id="s2">
+    <div class="qt">
+      <span data-ar>استُقبلتُ بحفاوة عند وصولي</span>
+      <span data-en>I was greeted courteously when I arrived</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg2">
+      <label class="ch">
+        <input type="radio" name="q2" value="Strongly agree أوافق بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق بشدة</span>
+          <span data-en>Strongly agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q2" value="Agree يوافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق</span>
+          <span data-en>Agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q2" value="Neutral حيادي">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>محايد</span>
+          <span data-en>Neutral</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q2" value="Disagree غير موافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق</span>
+          <span data-en>Disagree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q2" value="Strongly Disagree أرفض بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق بشدة</span>
+          <span data-en>Strongly Disagree</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e2">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b2" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n2" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 3: وقت الانتظار -->
+  <div class="step" id="s3">
+    <div class="qt">
+      <span data-ar>كان وقت الانتظار قبل الحصول على الرعاية معقولاً</span>
+      <span data-en>The waiting time before being seen was reasonable</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg3">
+      <label class="ch">
+        <input type="radio" name="q3" value="Strongly agree أوافق بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق بشدة</span>
+          <span data-en>Strongly agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q3" value="Agree يوافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق</span>
+          <span data-en>Agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q3" value="Neutral حيادي">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>محايد</span>
+          <span data-en>Neutral</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q3" value="Disagree غير موافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق</span>
+          <span data-en>Disagree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q3" value="Strongly disagree أرفض بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق بشدة</span>
+          <span data-en>Strongly disagree</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e3">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b3" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n3" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 4: شرح الطبيب -->
+  <div class="step" id="s4">
+    <div class="qt">
+      <span data-ar>شرح لي الطبيب تشخيصي وخيارات العلاج بطريقة أستطيع فهمها</span>
+      <span data-en>The provider explained my diagnosis and treatment options in a way I could understand</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg4">
+      <label class="ch">
+        <input type="radio" name="q4" value="Strongly agree أوافق بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق بشدة</span>
+          <span data-en>Strongly agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q4" value="Agree يوافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق</span>
+          <span data-en>Agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q4" value="Neutral حيادي">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>محايد</span>
+          <span data-en>Neutral</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q4" value="Disagree غير موافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق</span>
+          <span data-en>Disagree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q4" value="Strongly Disagree أرفض بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق بشدة</span>
+          <span data-en>Strongly Disagree</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e4">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b4" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n4" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 5: الرضا عن الرعاية -->
+  <div class="step" id="s5">
+    <div class="qt">
+      <span data-ar>بشكل عام، أنا راضٍ عن الرعاية التي تلقيتها</span>
+      <span data-en>Overall, I am satisfied with the care I received</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg5">
+      <label class="ch">
+        <input type="radio" name="q5" value="Strongly agree أوافق بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق بشدة</span>
+          <span data-en>Strongly agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q5" value="Agree يوافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>أوافق</span>
+          <span data-en>Agree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q5" value="Neutral حيادي">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>محايد</span>
+          <span data-en>Neutral</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q5" value="Disagree غير موافق">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق</span>
+          <span data-en>Disagree</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q5" value="Strongly Disagree أرفض بشدة">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لا أوافق بشدة</span>
+          <span data-en>Strongly Disagree</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e5">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b5" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n5" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 6: التوصية -->
+  <div class="step" id="s6">
+    <div class="qt">
+      <span data-ar>أوصي بهذا المركز للعائلة أو الأصدقاء</span>
+      <span data-en>I would recommend this center to family or friends</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg6">
+      <label class="ch">
+        <input type="radio" name="q6" value="Definitely yes بالتأكيد نعم">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>بالتأكيد نعم</span>
+          <span data-en>Definitely yes</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q6" value="Probably yes ربما نعم">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>ربما نعم</span>
+          <span data-en>Probably yes</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q6" value="Not sure لست متأكداً">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>لست متأكداً</span>
+          <span data-en>Not sure</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q6" value="Probably not ربما لا">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>ربما لا</span>
+          <span data-en>Probably not</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q6" value="Definitely not بالتأكيد لا">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>بالتأكيد لا</span>
+          <span data-en>Definitely not</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e6">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b6" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n6" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 7: الرضا العام -->
+  <div class="step" id="s7">
+    <div class="qt">
+      <span data-ar>الرضا العام</span>
+      <span data-en>Overall Satisfaction</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <div class="cg" id="cg7">
+      <label class="ch">
+        <input type="radio" name="q7" value="Excellent ممتاز">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>ممتاز</span>
+          <span data-en>Excellent</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q7" value="Good جيد">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>جيد</span>
+          <span data-en>Good</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q7" value="Fair عدل">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>مقبول</span>
+          <span data-en>Fair</span>
+        </div>
+      </label>
+      <label class="ch">
+        <input type="radio" name="q7" value="Poor فقير">
+        <div class="dot"></div>
+        <div class="ct">
+          <span data-ar>ضعيف</span>
+          <span data-en>Poor</span>
+        </div>
+      </label>
+    </div>
+    <div class="err" id="e7">
+      <span data-ar>⚠ يرجى اختيار إجابة.</span>
+      <span data-en>⚠ Please select an answer.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b7" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n7" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 8: تاريخ الزيارة -->
+  <div class="step" id="s8">
+    <div class="qt">
+      <span data-ar>تاريخ الزيارة</span>
+      <span data-en>Date of visit</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <input type="date" class="inp" id="visitDate">
+    <div class="err" id="e8">
+      <span data-ar>⚠ يرجى إدخال تاريخ الزيارة.</span>
+      <span data-en>⚠ Please enter the date of visit.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b8" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="n8" type="button">
+        <span data-ar>التالي ←</span>
+        <span data-en>Next →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- السؤال 9: وقت الزيارة -->
+  <div class="step" id="s9">
+    <div class="qt">
+      <span data-ar>وقت الزيارة</span>
+      <span data-en>Time of visit</span>
+      <span style="color:var(--c2)">*</span>
+    </div>
+    <input type="time" class="inp" id="visitTime">
+    <div class="err" id="e9">
+      <span data-ar>⚠ يرجى إدخال وقت الزيارة.</span>
+      <span data-en>⚠ Please enter the time of visit.</span>
+    </div>
+    <div class="nav">
+      <button class="bb" id="b9" type="button">
+        <span data-ar>→</span>
+        <span data-en>←</span>
+      </button>
+      <button class="bp" id="ns" type="button">
+        <span id="st">
+          <span data-ar>إرسال التقييم ✓</span>
+          <span data-en>Submit Survey ✓</span>
+        </span>
+        <div class="spin" id="sp" style="display:none"></div>
+      </button>
+    </div>
+  </div>
+
+  <div id="ok">
+    <div class="ok-ico">✓</div>
+    <h2>
+      <span data-ar>شكرًا لك!</span>
+      <span data-en>Thank You!</span>
+    </h2>
+    <div class="ok-ln"></div>
+    <p>
+      <span data-ar>تم استلام تقييمك بنجاح<br>نقدّر ثقتك بعيادات أبكس كير</span>
+      <span data-en>Your feedback has been received successfully<br>We appreciate your trust in APEXCARE Clinics</span>
+    </p>
+  </div>
+
+  <div id="bad">
+    <div class="ok-ico">!</div>
+    <h2>
+      <span data-ar>تعذر الإرسال</span>
+      <span data-en>Submission Failed</span>
+    </h2>
+    <div class="ok-ln"></div>
+    <p>
+      <span data-ar>حدث خطأ أثناء الإرسال.<br>فضلاً حاول مرة أخرى.</span>
+      <span data-en>An error occurred during submission.<br>Please try again.</span>
+    </p>
+    <div class="nav" style="justify-content:center;margin-top:16px">
+      <button class="bp" id="retry" type="button" style="max-width:260px">
+        <span data-ar>إعادة المحاولة</span>
+        <span data-en>Retry</span>
+      </button>
+    </div>
+  </div>
+
+</div></div></div>
+
+<script>
+// ============================================================
+// رابط Apps Script - استبدله برابطك الخاص
+// ============================================================
+var SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+// ============================================================
+// تبديل اللغة
+// ============================================================
+function toggleLang() {
+  const body = document.body;
+  const html = document.documentElement;
+  
+  if (body.classList.contains('en')) {
+    // التبديل للعربية
+    body.classList.remove('en');
+    html.setAttribute('lang', 'ar');
+    html.setAttribute('dir', 'rtl');
+    document.title = 'استبيان رضا المرضى | APEXCARE';
+  } else {
+    // التبديل للإنجليزية
+    body.classList.add('en');
+    html.setAttribute('lang', 'en');
+    html.setAttribute('dir', 'ltr');
+    document.title = 'Patient Satisfaction Survey | APEXCARE';
+  }
+}
+
+// ============================================================
+// منطق الاستبيان
+// ============================================================
+let cur = 1;
+const T = 9;
+
+function prog(n) {
+  const p = Math.round(n / T * 100);
+  document.getElementById('pF').style.width = p + '%';
+  document.getElementById('pP').textContent = p + '%';
+  
+  const isEn = document.body.classList.contains('en');
+  const plEl = document.getElementById('pL');
+  if (isEn) {
+    plEl.querySelector('[data-en]').textContent = 'Question ' + n + ' of ' + T;
+  } else {
+    plEl.querySelector('[data-ar]').textContent = 'السؤال ' + n + ' من ' + T;
+  }
+}
+
+function go(n) {
+  document.getElementById('s' + cur).classList.remove('on');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('on');
+  prog(n);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function rv(name) {
+  const e = document.querySelector('input[name="' + name + '"]:checked');
+  return e ? e.value : '';
+}
+
+function clrErr() {
+  document.querySelectorAll('.err').forEach(e => e.classList.remove('on'));
+}
+
+function showErr(id) {
+  const e = document.getElementById(id);
+  if (e) e.classList.add('on');
+}
+
+function ok(step) {
+  clrErr();
+  if (step >= 1 && step <= 7) {
+    if (!rv('q' + step)) {
+      showErr('e' + step);
+      return false;
+    }
+  } else if (step === 8) {
+    if (!document.getElementById('visitDate').value) {
+      showErr('e8');
+      return false;
+    }
+  } else if (step === 9) {
+    if (!document.getElementById('visitTime').value) {
+      showErr('e9');
+      return false;
+    }
+  }
+  return true;
+}
+
+function bind(id, fn) {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', fn);
+}
+
+bind('n1', () => { if (ok(1)) go(2) });
+bind('n2', () => { if (ok(2)) go(3) });
+bind('n3', () => { if (ok(3)) go(4) });
+bind('n4', () => { if (ok(4)) go(5) });
+bind('n5', () => { if (ok(5)) go(6) });
+bind('n6', () => { if (ok(6)) go(7) });
+bind('n7', () => { if (ok(7)) go(8) });
+bind('n8', () => { if (ok(8)) go(9) });
+bind('b2', () => go(1));
+bind('b3', () => go(2));
+bind('b4', () => go(3));
+bind('b5', () => go(4));
+bind('b6', () => go(5));
+bind('b7', () => go(6));
+bind('b8', () => go(7));
+bind('b9', () => go(8));
+bind('retry', () => location.reload());
+bind('ns', submit);
+
+// Radio button interaction
+for (let i = 1; i <= 7; i++) {
+  const cg = document.getElementById('cg' + i);
+  if (cg) {
+    cg.addEventListener('click', function(e) {
+      const item = e.target.closest('.ch');
+      if (!item) return;
+      this.querySelectorAll('.ch').forEach(c => c.classList.remove('on'));
+      item.classList.add('on');
+      const r = item.querySelector('input[type=radio]');
+      if (r) r.checked = true;
+    });
+  }
+}
+
+function showResult(isOk) {
+  document.getElementById('introSec').style.display = 'none';
+  document.getElementById('progSec').style.display = 'none';
+  document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+  document.getElementById('ok').style.display = isOk ? 'block' : 'none';
+  document.getElementById('bad').style.display = isOk ? 'none' : 'block';
+}
+
+let done = false;
+function submit() {
+  if (done) return;
+  if (!ok(9)) return;
+
+  done = true;
+  const btn = document.getElementById('ns');
+  btn.disabled = true;
+  document.getElementById('st').style.display = 'none';
+  document.getElementById('sp').style.display = 'block';
+
+  const payload = {
+    Q1: rv('q1'),
+    Q2: rv('q2'),
+    Q3: rv('q3'),
+    Q4: rv('q4'),
+    Q5: rv('q5'),
+    Q6: rv('q6'),
+    Q7: rv('q7'),
+    Q8: document.getElementById('visitDate').value,
+    Q9: document.getElementById('visitTime').value
+  };
+
+  var params = new URLSearchParams(payload).toString();
+  var img = new Image();
+  img.onload = img.onerror = function() {
+    showResult(true);
+  };
+  img.src = SCRIPT_URL + '?' + params;
+  setTimeout(function() {
+    if (done) showResult(true);
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
